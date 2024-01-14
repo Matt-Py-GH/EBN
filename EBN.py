@@ -1,8 +1,8 @@
-#A PRODUCTION BY: MMPROGRAMATIONCODE 2023 - 2024 PROCODEM
-#THIS GAME WAS CREATED BY AN ALONE PROGRAMMER, WHO CREATED PROCODEM TOO. HIS COMPANY
-#DEDICATED TO HER
-#Por favor si usted encuentra este código, no lo difunda, úselo a modo recreativo, pero no lo comparta, me costó mucho hacerlo
-#y probablemente me perjudicaría que se filtre, soy un programador novato, sepa disculpar mis errores.
+"""A PRODUCTION BY: MMPROGRAMATIONCODE 2023 - 2024 PROCODEM
+THIS GAME WAS CREATED BY AN ALONE PROGRAMMER, WHO CREATED PROCODEM TOO. HIS COMPANY
+DEDICATED TO HER
+Por favor si usted encuentra este código, no lo difunda, úselo a modo recreativo, pero no lo comparta, me costó mucho hacerlo
+y probablemente me perjudicaría que se filtre, soy un programador novato, sepa disculpar mis errores."""
 #-----------------------------------------------------------------------------------------------------------------------------------
 
 import pygame
