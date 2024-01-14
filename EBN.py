@@ -311,7 +311,7 @@ pd9 = False
 pd10 = False
 
 #Bugui
-rango_x_min = 690
+rango_x_min = 680
 rango_x_max = 700
 rango_y_min = 610
 rango_y_max = 620
