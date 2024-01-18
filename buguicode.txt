@@ -1,0 +1,29 @@
+rango_x_min = 300
+rango_x_max = 400
+rango_y_min = 60
+rango_y_max = 720
+
+pos_bugui = [random.randint(rango_x_min, rango_x_max), random.randint(rango_y_min, rango_y_max)]
+velocidad_bug = 1
+
+pos_bugui[0] += movimiento_x * velocidad_bug
+    pos_bugui[1] += movimiento_y * velocidad_bug
+    pos_bugui[0] = max(rango_x_min, min(pos_bugui[0], rango_x_max))
+    pos_bugui[1] = max(rango_y_min, min(pos_bugui[1], rango_y_max))
+
+anchobugui = 40
+    altobugui= 40
+    hitbox_bugui = pygame.Rect(pos_bugui[0], pos_bugui[1], anchobugui, altobugui)
+    hitbox_bugui.x = pos_bugui[0] + 70
+    hitbox_bugui.y = pos_bugui[1] + 90
+
+ if hitbox_personaje.colliderect(hitbox_bugui):
+            running = False
+            screen.blit(youdied, (0, 0))
+            pygame.display.flip()
+            pygame.time.wait(5000)
+            subprocess.Popen(["python", "menu.py"])
+            sys.exit()
+
+screen.blit(bugui, pos_bugui)
+

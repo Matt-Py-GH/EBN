@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Procodem</title>
+    <link rel="icon" href="procodem.ico" type="image/x-icon">
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #e1d7ff;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin-top: 50px;
+            font-size: 3em;
+            text-transform: uppercase;
+            color: #333;
+            text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+        }
+        p {
+            font-size: 1.5em;
+            font-style: italic;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            margin-bottom: 60px; /* Se aumentó el espacio debajo de la imagen */
+        }
+        #miBoton {
+            display: block;
+            margin: 0 auto;
+            font-size: 1.8em;
+            padding: 10px 20px;
+            margin-bottom: 60px; /* Se aumentó el espacio debajo del botón */
+        }
+        h2 {
+            margin-bottom: 40px; /* Se aumentó el espacio debajo del título */
+        }
+    </style>
+</head>
+<body>
+    <h1>Procodem</h1>
+    <p>Procodem is dedicated to creating video games or digital applications. Try our first digital product.</p>
+    <h2 style="margin-bottom: 40px;">Escape Before Night (GAME)</h2> <!-- Ajuste en línea -->
+    <img src="ebnlogo.png" alt="Escape Before Night" style="margin-bottom: 60px;"> <!-- Ajuste en línea -->
+    
+    <button id="miBoton">Buy 0.25$</button>
+
+    <script>
+        document.getElementById("miBoton").addEventListener("click", function() {
+            alert("¡Has hecho clic en el botón!");
+        });
+    </script>
+</body>
+</html>

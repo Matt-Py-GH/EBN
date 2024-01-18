@@ -1,0 +1,123 @@
+import pygame
+import sys
+import subprocess
+
+
+# Inicializar Pygame
+pygame.init()
+pygame.mixer.init()
+
+#Icono
+icono = pygame.image.load("icon.ico")
+pygame.display.set_icon(icono)
+
+# Definir colores
+menubg = (1, 8, 57)
+white = (255, 255, 255)
+botonbg = (52, 60, 111)
+version = (32, 35, 55)
+title = (69, 80, 153)
+procodem = (64, 0 , 128)
+
+#Sonidos
+pygame.mixer.music.load('suspensotrack.mp3')
+pygame.mixer.music.set_volume(0.9)
+pygame.mixer.music.play(-1)
+
+# Configuración de la pantalla
+screen = pygame.display.set_mode((800, 600))
+pygame.display.set_caption("Escape before night 1.5")
+pygame.display.flip()
+    
+#Draws
+fondo = pygame.image.load("fondo.png")
+fondo = pygame.transform.scale(fondo, (450, 450))
+pos_fondo = [200, 80]
+
+empresa = pygame.image.load("procodem.png")
+empresa = pygame.transform.scale(empresa, (800, 290))
+pos_empresa = [0, 130]
+
+# Fuente y tamaño del texto
+font = pygame.font.Font(None, 36)
+font2 = pygame.font.Font(None, 16)
+font3 = pygame.font.Font(None, 40)
+
+# Función para mostrar texto en pantalla
+def mostrar_texto(texto, x, y, color, font_size=36):
+    font = pygame.font.Font(None, font_size)
+    texto_superficie = font.render(texto, True, color)
+    text_rect = texto_superficie.get_rect()
+    text_rect.topleft = (x, y)
+    screen.blit(texto_superficie, text_rect)
+
+# Función para crear botones
+def crear_boton(x, y, ancho, alto, color, texto, accion=None):
+    pygame.draw.rect(screen, color, (x, y, ancho, alto), 6)
+    pygame.draw.rect(screen, white, (x, y, ancho, alto), 2)
+    mostrar_texto(texto, x + 10, y + 10, white)
+    rect_boton = pygame.Rect(x, y, ancho, alto)
+    return rect_boton, accion
+
+# Funciones para acciones de los botones
+def iniciar_juego():
+    subprocess.Popen(["python", "EBN.py"])
+    sys.exit()
+
+def salir_juego():
+    pygame.quit()
+    sys.exit()
+    
+def pantalla_carga():
+    progreso = 0
+    ancho_carga = 520
+    alto_carga = 20
+    margen_horizontal = 130
+    margen_vertical = 420
+
+    fondo = pygame.Surface(screen.get_size())
+    fondo.fill(procodem)
+
+    margen_interior = 5
+
+    while progreso < 100:
+        pygame.time.delay(20)
+        progreso += 1
+        progreso_relativo = (progreso / 100) * (ancho_carga - 2 * margen_interior)
+
+        screen.blit(fondo, (0, 0))
+        screen.blit(empresa, pos_empresa)
+
+        pygame.draw.rect(screen, (0, 0, 0), (margen_horizontal, margen_vertical, ancho_carga, alto_carga), 2)
+        
+        pygame.draw.rect(screen, white, (margen_horizontal + margen_interior, margen_vertical + margen_interior,
+        progreso_relativo, alto_carga - 2 * margen_interior))
+
+        pygame.display.update()
+
+pantalla_carga()
+
+#Bucle principal del menú
+menu_activo = True
+while menu_activo:
+    screen.fill(menubg)
+    screen.blit(fondo, pos_fondo)
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            x, y = pygame.mouse.get_pos()
+            if boton_iniciar.collidepoint((x, y)):
+                iniciar_juego()
+            elif boton_salir.collidepoint((x, y)):
+                salir_juego()
+    mostrar_texto("Escape before night", 275, 0, title, font_size=40)
+    mostrar_texto("©MMProgramationCode 2024", 325, 585, version, font_size=16)
+    mostrar_texto("Version 1.5", 0, 585, version, font_size=16)
+
+    boton_iniciar, _ = crear_boton(0, 200, 100, 50, botonbg, "Start", iniciar_juego)
+    boton_salir, _ = crear_boton(0, 400, 100, 50, botonbg, "Exit", salir_juego)
+
+    pygame.display.update()
